@@ -6,16 +6,12 @@ User = get_user_model()
 # Create your models here.
 
 
-class School(models.Model):
+class Practitioner(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    school_type = models.CharField(max_length=25)
-    school_name = models.CharField(max_length=50)
+    first_name= models.CharField(max_length=50)
+    last_name= models.CharField(max_length=50)
+    middle_initial=models.CharField(max_length=1)
     address = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=5)
     phone = models.CharField(max_length=10)
-    school_description = models.CharField(max_length=200)
-    
-    
-    
-    
-    
+    school_interest = models.CharField(max_length=200)

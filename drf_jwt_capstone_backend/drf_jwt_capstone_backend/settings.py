@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
     'schools.apps.SchoolsConfig',
+    'practitioners.apps.PractitionersConfig',
     'corsheaders',
 ]
 
