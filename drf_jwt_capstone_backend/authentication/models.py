@@ -10,5 +10,5 @@ from django.contrib.auth.models import AbstractUser
 # 2. python manage.py migrate
 
 
-class User(AbstractUser):
-    middle_name = models.CharField(max_length=20)
+# class User(AbstractUser):
+#     middle_name = models.CharField(max_length=20)
