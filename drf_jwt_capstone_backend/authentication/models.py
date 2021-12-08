@@ -10,5 +10,28 @@ from django.contrib.auth.models import AbstractUser
 # 2. python manage.py migrate
 
 
-# class User(AbstractUser):
-#     middle_name = models.CharField(max_length=20)
+class User(AbstractUser):
+   
+   
+    TYPE =(
+        ('Aikido', 'Aikido'),
+        ('Boxing', 'Boxing'),
+        ('BJJ', 'Brazilian Juijitsu'),
+        ('Capoeira', 'Capoeira'),
+        ('Karate', 'Karate'),
+        ('KravMaga', 'Krav Maga'),
+        ('KungFu', 'Kung Fu'),
+        ('KickBoxing', 'KickBoxing'),
+        ('MuayThai', 'Muay Thai'),
+        ('TaeKwon Do', 'Tae Kwon Do'),
+        ('ValeTudo', 'Vale Tudo'),
+        ('Wrestling', 'Wrestling'),
+        
+    )
+   
+    middle_name = models.CharField(max_length=20)
+    address = models.CharField(max_length=50, null=True)
+    zip_code = models.CharField(max_length=5, null=True)
+    phone = models.CharField(max_length=12, null=True)
+    school_interest = models.CharField(max_length=50, null=True, blank=False, unique=True, default='', choices=TYPE)
+

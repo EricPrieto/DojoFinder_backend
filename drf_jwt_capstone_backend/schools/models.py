@@ -5,6 +5,8 @@ from django.db.models.base import Model
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+from rest_framework_simplejwt.tokens import RefreshToken
+
 # Create your models here.
 
 
@@ -34,22 +36,14 @@ class School(models.Model):
     school_description = models.TextField(null=True, blank=True)
     rating = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     number_Reviews = models.IntegerField(null=True, blank=True, default=0)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True )
 
     def __str__(self):
         return self.school_name
 
     
 
-class Review(models.Model):
-    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    school =models.ForeignKey(School, on_delete=models.SET_NULL, null=True)
-    rating = models.IntegerField(null=True, blank=True, default=0)
-    comment = models.TextField(null=True, blank=True)
 
-    def __str__(self):
-        return self.school, self.rating
-    
     
     
     
