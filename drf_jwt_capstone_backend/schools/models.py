@@ -11,18 +11,18 @@ User = get_user_model()
 
 class School(models.Model):
     TYPE =(
-        ('AK', 'Aikido'),
-        ('BX', 'Boxing'),
+        ('Aikido', 'Aikido'),
+        ('Boxing', 'Boxing'),
         ('BJJ', 'Brazilian Juijitsu'),
-        ('CP', 'Capoeira'),
-        ('KA', 'Karate'),
-        ('KM', 'Krav Maga'),
-        ('KF', 'Kung Fu'),
-        ('KB', 'KickBoxing'),
-        ('MT', 'Muay Thai'),
-        ('TKD', 'Tae Kwon Do'),
-        ('VT', 'Vale Tudo'),
-        ('WR', 'Wrestling'),
+        ('Capoeira', 'Capoeira'),
+        ('Karate', 'Karate'),
+        ('KravMaga', 'Krav Maga'),
+        ('KungFu', 'Kung Fu'),
+        ('KickBoxing', 'KickBoxing'),
+        ('MuayThai', 'Muay Thai'),
+        ('TaeKwon Do', 'Tae Kwon Do'),
+        ('ValeTudo', 'Vale Tudo'),
+        ('Wrestling', 'Wrestling'),
         
     )
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
@@ -38,10 +38,6 @@ class School(models.Model):
 
     def __str__(self):
         return self.school_name
-
-    
-
-   
 
     
 
