@@ -2,9 +2,11 @@ from enum import unique
 from django.core import validators
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.http import response
 User = get_user_model()
 from django.core.validators import MaxValueValidator, MinValueValidator
 from rest_framework_simplejwt.tokens import RefreshToken
+
 
 # Create your models here.
 
@@ -37,11 +39,33 @@ class School(models.Model):
     # number_Reviews = models.IntegerField(null=True, blank=True, default=0)
     image = models.ImageField(null=True, blank=True )
 
+    def __str__(self):
+        return self.school_name
+
+    
+    def no_of_ratings(self):
+        ratings = Rating.objects.filter(school =self)
+        return len(ratings)
+
+    def avg_rating(self):
+        sum = 0
+        ratings = Rating.objects.filter(school =self)
+        for rating in ratings:
+            sum += rating.stars
+            
+        if len(ratings) > 0:
+            return sum / len(ratings)
+        else:
+            return 0
+
 
 class Rating(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     stars = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+
+    def __str__(self):
+        return self.school
 
     class Meta:
         unique_together = (('user', 'school'),)
@@ -49,13 +73,8 @@ class Rating(models.Model):
     
 
 
-    def no_of_ratings(self):
-        ratings = Rating.objects.filter(school =self)
-        return len(ratings)
 
-    def __str__(self):
-        return self.school_name
-
+   
     
 
 

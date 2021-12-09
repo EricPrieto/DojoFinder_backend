@@ -10,7 +10,7 @@ class SchoolSerializer(serializers.ModelSerializer):
         # If added new columns through the User model, add them in the fields
         # list as seen below
         fields = ('id', 'user', 'school_type', 'school_name ', 'school_address', 
-                'school_zip', 'phone', 'school_description', 'rating', 'image')
+                'school_zip', 'phone', 'school_description', 'rating', 'image', 'no_of_ratings', 'avg_rating')
 
 
 class RatingSerializer(serializers.ModelSerializer):

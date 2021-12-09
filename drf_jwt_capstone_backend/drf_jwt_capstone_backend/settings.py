@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'schools.apps.SchoolsConfig',
     'reviews',
+   
     'corsheaders',
 ]
 
