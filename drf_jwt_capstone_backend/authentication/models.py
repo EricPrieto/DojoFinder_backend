@@ -33,5 +33,5 @@ class User(AbstractUser):
     address = models.TextField(max_length=50, null=True)
     zip_code = models.CharField(max_length=5, null=True)
     phone = models.CharField(max_length=12, null=True)
-    school_interest = models.CharField(max_length=50, null=True, blank=False, unique=True, default='', choices=TYPE)
+    school_interest = models.CharField(max_length=50, null=True, blank=False, unique=True, choices=TYPE)
 

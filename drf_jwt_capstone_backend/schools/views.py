@@ -7,6 +7,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import School
+from .serializers import SchoolSerializer
+from .models import Rating
+from .serializers import RatingSerializer
 
 from .serializers import SchoolSerializer
 
@@ -21,6 +24,14 @@ class SchoolList(APIView):
     def get(self, request):
         schools = School.objects.all()
         serializer = SchoolSerializer(schools, many=True)
+        return Response(Serializer.data)
+
+class RatingView(APIView):
+    permission_classes = (IsAuthenticated)
+
+    def get(self, request):
+        ratings = Rating.objects.all()
+        serializer = RatingSerializer(ratings, many=True)
         return Response(Serializer.data)
 
 
