@@ -5,6 +5,6 @@ from .import views
 
 urlpatterns = [
     path('', views.SchoolList.as_view()),
-    path('', views.ReviewList.as_view()),
+    
 
 ]

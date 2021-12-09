@@ -6,11 +6,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from .models import School
 from .models import Review
 from .serializers import ReviewSerializer
 from django.contrib.auth.models import User
 from django.http.response import Http404
+
 
 
 # Create your views here.
