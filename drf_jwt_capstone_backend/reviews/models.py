@@ -18,8 +18,8 @@ class Review(models.Model):
     rating = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
 
-    def __str__(self):
-        return self.school_name , self.rating
+    # def __str__(self):
+    #     return self.school_name , self.rating
 
 
     

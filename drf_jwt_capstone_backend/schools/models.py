@@ -52,7 +52,7 @@ class School(models.Model):
         ratings = Rating.objects.filter(school =self)
         for rating in ratings:
             sum += rating.stars
-            
+
         if len(ratings) > 0:
             return sum / len(ratings)
         else:
@@ -64,8 +64,8 @@ class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     stars = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
 
-    def __str__(self):
-        return self.school
+    # def __str__(self):
+    #     return self.school
 
     class Meta:
         unique_together = (('user', 'school'),)

@@ -29,7 +29,7 @@ class User(AbstractUser):
         
     )
    
-    middle_name = models.CharField(max_length=20)
+    middle_name = models.CharField(max_length=20, blank=True)
     address = models.TextField(max_length=50, null=True)
     zip_code = models.CharField(max_length=5, null=True)
     phone = models.CharField(max_length=12, null=True)

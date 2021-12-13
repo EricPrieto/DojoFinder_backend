@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'schools.apps.SchoolsConfig',
     'reviews',
-   
+    # 'api',
     'corsheaders',
 ]
 
@@ -57,6 +57,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost:3000"
+# ]
 
 ROOT_URLCONF = 'drf_jwt_capstone_backend.urls'
 
