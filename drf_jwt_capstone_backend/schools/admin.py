@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Rating, School
+from .models import School
 
 # Register your models here.
 admin.site.register(School)
-admin.site.register(Rating)
+# admin.site.register(Rating)
 
 
 

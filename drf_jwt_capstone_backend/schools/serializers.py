@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from.models import Rating, School
+from.models import School
 
 
 
@@ -13,12 +13,12 @@ class SchoolSerializer(serializers.ModelSerializer):
                 'school_zip', 'phone', 'school_description', 'rating', 'image', 'no_of_ratings', 'avg_rating')
 
 
-class RatingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rating
-        # If added new columns through the User model, add them in the fields
-        # list as seen below
-        fields = ('id', 'user', 'stars', 'school')
+# class RatingSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Rating
+#         # If added new columns through the User model, add them in the fields
+#         # list as seen below
+#         fields = ('id', 'user', 'stars', 'school')
 
 
 

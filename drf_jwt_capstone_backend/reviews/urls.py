@@ -4,6 +4,6 @@ from schools import views
 from .import views
 
 urlpatterns = [
-    path('', views.ReviewList.as_view()),
+    path('reviews/', views.ReviewList.as_view()),
 
 ]

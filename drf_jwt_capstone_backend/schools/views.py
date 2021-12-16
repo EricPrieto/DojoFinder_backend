@@ -8,25 +8,28 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import School
 from .serializers import SchoolSerializer
-from .models import Rating
-from .serializers import RatingSerializer
-from .serializers import SchoolSerializer
+# from .models import Rating
+# from .serializers import RatingSerializer
 from django.contrib.auth.models import User
 from django.http.response import Http404
-from rest_framework import status
-from django.http import response
 from rest_framework.decorators import action
-from rest_framework.response import Response
+
 
 # Create your views here.
 
 class SchoolList(APIView):
     permission_classes = (IsAuthenticated)
-
     def get(self, request):
         schools = School.objects.all()
         serializer = SchoolSerializer(schools, many=True)
         return Response(Serializer.data)
+    
+    def post(self, request):
+        serializer = SchoolSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action (detail=True, methods=['POST'])
     def rate_school(self, request, pk=None):
@@ -46,7 +49,7 @@ class SchoolList(APIView):
                 return Response (response, status=status.HTTP_200_OK)
 
             except:
-                rating = Rating.objects.get(user=user, school=school, stars=stars)
+                rating = Rating.objects.get(user=User, school=school, stars=stars)
                 serializer = RatingSerializer(rating, many=False)
                 response = {'message': 'Rating created', 'result' : serializer.data}
                 return Response (response, status=status.HTTP_200_OK)
